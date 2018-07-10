@@ -1,5 +1,6 @@
 package com.zzw.demo.problem.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -36,11 +37,13 @@ public class Problem extends Model<Problem> {
     /**
      * @TableLogic 逻辑删除
      */
-    @TableField("is_deleted")
     @TableLogic
+    @TableField("is_deleted")
     private Integer isDeleted;
     @TableField("gmt_create")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime gmtCreate;
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     @TableField("gmt_modified")
     private LocalDateTime gmtModified;
     private String title;
