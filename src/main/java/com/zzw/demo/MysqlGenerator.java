@@ -40,9 +40,9 @@ import java.util.*;
  */
 public class MysqlGenerator {
 
-    private static String packageName = "problem";    //文件路径
+    private static String packageName = "user";    //文件路径
     private static String authorName = "zzw";     //作者
-    private static String table = "problem";                  //table名字
+    private static String table = "user";                  //table名字
     private static String prefix = "";                     //table前缀
     private static File file = new File("");
     private static String path = file.getAbsolutePath();

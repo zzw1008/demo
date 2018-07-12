@@ -22,6 +22,14 @@ public enum ResultEnum {
 	 */
 	PARAMETER_ERROR(1,"参数错误"),
 	/**
+	 * 登陆错误
+	 */
+	Login_ERROR(2,"账号或密码不对"),
+	/**
+	 * 插入语句执行错误
+	 */
+	INSERT_ERROR(3,"插入语句执行错误"),
+	/**
 	 * 未授权
 	 */
 	UNAUTHORIZED(401,"未授权")

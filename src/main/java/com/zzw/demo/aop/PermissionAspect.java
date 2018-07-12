@@ -4,7 +4,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.zzw.demo.exception.Result;
 import com.zzw.demo.exception.ResultEnum;
 import com.zzw.demo.util.JwtUtil;
-import com.zzw.demo.util.RedisOperator;
+import com.zzw.demo.util.RedisUtil;
 import com.zzw.demo.util.TokenUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -37,7 +37,7 @@ public class PermissionAspect {
 	@Value("#{'${permission.ingnore}'.split(',')}")
 	private List<String> ignorePerm;
 	@Autowired
-	private RedisOperator redisOperator;
+	private RedisUtil redisUtil;
 
 	public PermissionAspect() {
 	}
@@ -70,7 +70,7 @@ public class PermissionAspect {
 			return false;
 		}
 
-		Object obj = this.redisOperator.get(token);
+		Object obj = this.redisUtil.get(token);
 		if (obj == null) {
 			return false;
 		} else {

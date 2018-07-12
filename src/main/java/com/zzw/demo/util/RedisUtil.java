@@ -15,14 +15,14 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2018/7/9 15:21
  */
 @Component
-public class RedisOperator {
+public class RedisUtil {
 	//	@Autowired
     private RedisTemplate<Object, Object> redisTemplate;
 
 //	@Autowired
 //	private StringRedisTemplate redisTemplate;
 
-	public RedisOperator() {
+	public RedisUtil() {
 	}
 
 	public void setRedisTemplate(RedisTemplate<Object, Object> redisTemplate) {
@@ -97,7 +97,7 @@ public class RedisOperator {
 	 * @param timeout
 	 *            （以秒为单位）
 	 */
-	public void set(String key, String value, long timeout) {
+	public void set(String key, Object value, long timeout) {
 		redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
 	}
 
@@ -107,8 +107,8 @@ public class RedisOperator {
 	 * @param key
 	 * @return value
 	 */
-	public String get(String key) {
-		return (String)redisTemplate.opsForValue().get(key);
+	public Object get(String key) {
+		return redisTemplate.opsForValue().get(key);
 	}
 
 	// Hash（哈希表）

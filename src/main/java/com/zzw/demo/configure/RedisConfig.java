@@ -1,6 +1,6 @@
 package com.zzw.demo.configure;
 
-import com.zzw.demo.util.RedisOperator;
+import com.zzw.demo.util.RedisUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,11 +18,11 @@ public class RedisConfig {
 	}
 
 	@Bean(
-			name = {"redisOperator"}
+			name = {"redisUtil"}
 	)
-	public RedisOperator redisUtil(RedisTemplate<Object, Object> redisTemplate) {
-		RedisOperator redisOperator = new RedisOperator();
-		redisOperator.setRedisTemplate (redisTemplate);
-		return redisOperator;
+	public RedisUtil redisUtil(RedisTemplate<Object, Object> redisTemplate) {
+		RedisUtil redisUtil = new RedisUtil ();
+		redisUtil.setRedisTemplate (redisTemplate);
+		return redisUtil;
 	}
 }
