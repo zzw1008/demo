@@ -24,23 +24,23 @@ public class Result {
 	/**
 	 * 提示信息
 	 */
-	private String message;
+	private String msg;
 
 	/**
 	 * 返回内容
 	 */
-	private Object response;
+	private Object data;
 
 
 	public static Result success(Object response){
-		Result result = new Result ().setCode (ResultEnum.SUCCESS.getCode ()).setMessage ( ResultEnum.SUCCESS.getMsg
-				()).setResponse ( JSONObject.toJSONString (response));
+		Result result = new Result ().setCode (ResultEnum.SUCCESS.getCode ()).setMsg ( ResultEnum.SUCCESS.getMsg
+				()).setData ( JSONObject.toJSONString (response));
 		return result;
 	}
 
 	public static Result fail(ResultEnum resultEnum,Object response){
-		Result result = new Result ().setCode (resultEnum.getCode ()).setMessage ( resultEnum.getMsg
-				()).setResponse (JSONObject.toJSONString (response));
+		Result result = new Result ().setCode (resultEnum.getCode ()).setMsg ( resultEnum.getMsg
+				()).setData (JSONObject.toJSONString (response));
 		return result;
 	}
 }

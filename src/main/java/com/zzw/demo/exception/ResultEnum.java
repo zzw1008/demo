@@ -8,10 +8,23 @@ package com.zzw.demo.exception;
  * @Date: 2018/5/30 16:44
  */
 public enum ResultEnum {
-	
+
+	/**
+	 * 未知错误
+	 */
 	UNKONW_ERROR(-1,"未知错误"),
+	/**
+	 * 成功访问
+	 */
 	SUCCESS(200,"成功"),
-	PARAMETER_ERROR(1,"参数错误")
+	/**
+	 * 参数错误
+	 */
+	PARAMETER_ERROR(1,"参数错误"),
+	/**
+	 * 未授权
+	 */
+	UNAUTHORIZED(401,"未授权")
 	;
 	private Integer code;
 

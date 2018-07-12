@@ -1,7 +1,6 @@
 package com.zzw.demo.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -18,10 +17,17 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisOperator {
 	//	@Autowired
-//    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
 
-	@Autowired
-	private StringRedisTemplate redisTemplate;
+//	@Autowired
+//	private StringRedisTemplate redisTemplate;
+
+	public RedisOperator() {
+	}
+
+	public void setRedisTemplate(RedisTemplate<Object, Object> redisTemplate) {
+		this.redisTemplate = redisTemplate;
+	}
 
 	// Key（键），简单的key-value操作
 
@@ -58,7 +64,7 @@ public class RedisOperator {
 	/**
 	 * 实现命令：KEYS pattern，查找所有符合给定模式 pattern的 key
 	 */
-	public Set<String> keys(String pattern) {
+	public Set<Object> keys(String pattern) {
 		return redisTemplate.keys(pattern);
 	}
 
