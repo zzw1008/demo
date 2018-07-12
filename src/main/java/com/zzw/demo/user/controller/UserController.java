@@ -1,6 +1,7 @@
 package com.zzw.demo.user.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -74,7 +75,7 @@ public class UserController {
 
 	private String createToken(User u) {
 		String token = JwtUtil.sign(JwtUtil.builder().withIssuer(u.getName()).withSubject(u.getPassword ()));
-		redisUtil.set(token, u, SystemConstant.DEFAULT_JWT_EXPIRE_TIME);
+		redisUtil.set(token, JSONObject.toJSONString (u), SystemConstant.DEFAULT_JWT_EXPIRE_TIME);
 
 		return token;
 	}
@@ -91,8 +92,8 @@ public class UserController {
 	@ResponseBody
 	@Permission(value = "user.getInfo")
 	public Result getInfo(HttpServletRequest req) {
-		User u = (User) req.getAttribute(SystemConstant.CACHED_USER_INFO);
-
+//		User u = (User) req.getAttribute(SystemConstant.CACHED_USER_INFO);
+		User u = JSON.parseObject ( (String) req.getAttribute(SystemConstant.CACHED_USER_INFO),User.class);
 		return Result.success(u);
 	}
 

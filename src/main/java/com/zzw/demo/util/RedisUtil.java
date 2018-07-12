@@ -1,6 +1,7 @@
 package com.zzw.demo.util;
 
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -17,17 +18,20 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisUtil {
 	//	@Autowired
-    private RedisTemplate<Object, Object> redisTemplate;
+//    private RedisTemplate<Object, Object> redisTemplate;
 
 //	@Autowired
-//	private StringRedisTemplate redisTemplate;
+	private RedisTemplate redisTemplate;
 
 	public RedisUtil() {
 	}
 
-	public void setRedisTemplate(RedisTemplate<Object, Object> redisTemplate) {
-		this.redisTemplate = redisTemplate;
+	public void setRedisTemplate(StringRedisTemplate stringRedisTemplate){
+		this.redisTemplate = stringRedisTemplate;
 	}
+//	public void setRedisTemplate(RedisTemplate<Object, Object> redisTemplate) {
+//		this.redisTemplate = redisTemplate;
+//	}
 
 	// Key（键），简单的key-value操作
 
@@ -64,7 +68,7 @@ public class RedisUtil {
 	/**
 	 * 实现命令：KEYS pattern，查找所有符合给定模式 pattern的 key
 	 */
-	public Set<Object> keys(String pattern) {
+	public Set<String> keys(String pattern) {
 		return redisTemplate.keys(pattern);
 	}
 
@@ -98,7 +102,7 @@ public class RedisUtil {
 	 *            （以秒为单位）
 	 */
 	public void set(String key, Object value, long timeout) {
-		redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
+		redisTemplate.opsForValue().set(key, String.valueOf ( value ), timeout, TimeUnit.SECONDS);
 	}
 
 	/**
