@@ -8,6 +8,8 @@
         <result column="is_deleted" property="isDeleted" />
         <result column="gmt_create" property="gmtCreate" />
         <result column="gmt_modified" property="gmtModified" />
+        <result column="created_id" property="createdId" />
+        <result column="created_name" property="createdName" />
         <result column="name" property="name" />
         <result column="password" property="password" />
         <result column="email" property="email" />
@@ -19,7 +21,8 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, is_deleted, gmt_create, gmt_modified, name, password, email, phone, sex, we_chat, status
+        id, is_deleted as isDeleted, gmt_create as gmtCreate, gmt_modified as gmtModified, created_id as createdId,
+         created_name as createdName,name, password, email, phone, sex, we_chat as weChat, status
     </sql>
 
 </mapper>

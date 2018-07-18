@@ -50,7 +50,7 @@ public class PermissionAspect {
 	public Object Interceptor(ProceedingJoinPoint pjp) throws Throwable {
 		Permission permission = (Permission)((MethodSignature)pjp.getSignature()).getMethod().getAnnotation(Permission.class);
 		String perm = permission.value();
-		return !this.ignorePerm.contains(perm) && !this.validPermission(perm) ? Result.fail ( ResultEnum.UNAUTHORIZED
+		return !ignorePerm.contains(perm) && !validPermission(perm) ? Result.fail ( ResultEnum.UNAUTHORIZED
 				,"没有访问权限") : pjp
 				.proceed();
 	}
@@ -65,8 +65,8 @@ public class PermissionAspect {
 			}
 
 			JwtUtil.verify(token);
-		} catch (JWTVerificationException var5) {
-			log.error("jwt", var5.getMessage(), var5);
+		} catch (JWTVerificationException e) {
+			log.error("jwt", e.getMessage(), e);
 			return false;
 		}
 

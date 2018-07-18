@@ -2,7 +2,6 @@ package com.zzw.demo.user.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,25 +28,46 @@ public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+	private Long id;
+	@TableField("is_deleted")
+	private Integer isDeleted;
+	@TableField("gmt_create")
+	private LocalDateTime gmtCreate;
+	@TableField("gmt_modified")
+	private LocalDateTime gmtModified;
+	@TableField("created_id")
+	private Long createdId;
+	@TableField("created_name")
+	private String createdName;
 	/**
-	 * @TableLogic 逻辑删除
+	 * 名称
 	 */
-	@TableLogic
-    @TableField("is_deleted")
-    private Integer isDeleted;
-    @TableField("gmt_create")
-    private LocalDateTime gmtCreate;
-    @TableField("gmt_modified")
-    private LocalDateTime gmtModified;
-    private String name;
-    private String password;
-    private String email;
-    private String phone;
-    private String sex;
-    @TableField("we_chat")
-    private String weChat;
-    private String status;
+	private String name;
+	/**
+	 * 密码
+	 */
+	private String password;
+	/**
+	 * 邮箱
+	 */
+	private String email;
+	/**
+	 * 手机号
+	 */
+	private String phone;
+	/**
+	 * 性别
+	 */
+	private String sex;
+	/**
+	 * 微信号
+	 */
+	@TableField("we_chat")
+	private String weChat;
+	/**
+	 * 状态：正常、停用
+	 */
+	private String status;
 
 
 	@Override

@@ -30,8 +30,9 @@ import java.time.LocalDateTime;
  * @since 2018-07-12
  */
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 @Log4j2
+@CrossOrigin
 public class UserController {
 	@Autowired
 	private UserService userService;

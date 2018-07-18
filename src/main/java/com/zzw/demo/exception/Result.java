@@ -1,6 +1,5 @@
 package com.zzw.demo.exception;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.stereotype.Component;
@@ -34,13 +33,13 @@ public class Result {
 
 	public static Result success(Object response){
 		Result result = new Result ().setCode (ResultEnum.SUCCESS.getCode ()).setMsg ( ResultEnum.SUCCESS.getMsg
-				()).setData ( JSONObject.toJSONString (response));
+				()).setData(response);
 		return result;
 	}
 
 	public static Result fail(ResultEnum resultEnum,Object response){
 		Result result = new Result ().setCode (resultEnum.getCode ()).setMsg ( resultEnum.getMsg
-				()).setData (JSONObject.toJSONString (response));
+				()).setData (response);
 		return result;
 	}
 }
